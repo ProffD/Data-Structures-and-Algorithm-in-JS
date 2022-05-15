@@ -47,6 +47,28 @@ class LinkedList {
 
     }
 
+    find(value){
+        if(!this.head) return null;
+        
+        let currNode = this.head;
+        while(currNode){
+            if(currNode.value === value){
+                return currNode;
+            }
+
+            currNode = currNode.next;
+        }
+        return null;
+    }
+
+    insertAfter(value,afterValue){
+        const existingNode = this.find(afterValue);
+        if(existingNode){
+            const newNode = {value: value, next: existingNode.next}
+            existingNode.next = newNode;
+        }
+    }
+
     printList(){
         let currNode = this.head;
         while(currNode){
@@ -67,6 +89,11 @@ linkedList.append(1);
 console.log('Before delete');
 linkedList.printList();
 linkedList.delete(1);
-console.log('Aftere delete');
+console.log('After delete');
+linkedList.printList();
+console.log(linkedList.find(6) ? '6 was found' : '6 was not found');
+linkedList.insertAfter(8,6);
+linkedList.insertAfter(10,3);
+console.log('After insertAfter');
 linkedList.printList();
 
