@@ -36,7 +36,7 @@ queue.enqueue(5);
 queue.enqueue(2);
 queue.enqueue(7);
 queue.printQueue();
-console.log(queue.front() + ' is the first element in the queue.');
+console.log(queue.front() + ' is the first element in the queue');
 
-console.log(queue.dequeue() + ' is removed from the queue.');
+console.log(queue.dequeue() + ' is removed from the queue');
 queue.printQueue();
