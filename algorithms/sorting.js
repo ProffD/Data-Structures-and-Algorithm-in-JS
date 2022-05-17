@@ -26,12 +26,28 @@ class Sort {
         return [...resultArray, ...leftArray.slice(), ...rightArray.slice()];
     }
 
+    quickSort = array => {
+        if(array.length < 2  ) return array;
+
+        const [pivot, ...rest] = array;
+        const leftArray = [];
+        const rightArray = [];
+
+        rest.forEach(element => element < pivot ? leftArray.push(element) : rightArray.push(element));
+        
+        return [...this.quickSort(leftArray),pivot, ...this.quickSort(rightArray)];
+
+    }
 }
 
 const sort = new Sort();
-const array = [10,2,1,5,3,4,7,9,6,8,11,15,14,12,16,13,20,19,18,17];
+const array = [1,2,10,5,3,4,7,9,6,8,11,15,14,12,16,13,20,19,18,17];
 console.time();
 console.log('Using Merge sort: ',sort.mergeSort(array));
+console.timeEnd();
+
+console.time();
+console.log('Using Quick sort: ',sort.quickSort(array));
 console.timeEnd();
 
 
